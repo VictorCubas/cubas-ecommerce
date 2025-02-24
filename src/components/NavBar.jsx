@@ -13,6 +13,7 @@ import {
 const NavBar = () => {
     const [openNav, setOpenNav] = useState(false);
  
+    // useEffect propio del codigo proveido por material tailwind
     useEffect(() => {
       window.addEventListener(
         "resize",
