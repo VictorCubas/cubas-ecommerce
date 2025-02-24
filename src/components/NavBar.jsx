@@ -127,10 +127,8 @@ const NavBar = () => {
         <Collapse open={openNav}>
           {navList}
           <div className="flex items-center gap-x-4">
-            <Button variant="gradient" size="sm" className="text-lg">
               {/* icono de cart */}
               <CartWidget />
-            </Button>
           </div>
         </Collapse>
       </Navbar>
