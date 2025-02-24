@@ -80,15 +80,7 @@ const NavBar = () => {
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
             <div className="flex items-center gap-x-1">
-              <Button
-                variant="gradient"
-                size="sm"
-                className="hidden lg:inline-block text-xl"
-              >
-
-                {/* icono de cart */}
                 <CartWidget />
-              </Button>
             </div>
 
             {/* icono de hamburguesa */}
