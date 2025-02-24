@@ -7,3 +7,14 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+#root{
+  overflow-x: hidden;
+}
+
+@media (width < 960px) {
+  .navbar-container{
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+  }
+}
