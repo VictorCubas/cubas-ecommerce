@@ -1,12 +1,13 @@
 import React from 'react'
 import Evento from './Evento'
+// rafce
 
-const EventoList = ({data}) => {
+const EventoList = ({eventos}) => {
   return (
     <>
       <section id="shop">
         <ul id="products">
-          {data.map((evento) => {
+          {eventos.map((evento) => {
               return <li key={evento.id}>
                   <Evento evento={evento}/>
               </li>

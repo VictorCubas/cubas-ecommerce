@@ -14,7 +14,7 @@ const Evento = ({evento}) => {
         </div>
         <p className='product-actions'>
           {/* <button onClick={() => addItemToCart(id)}>Add to Cart</button> */}
-          <button>Add to Cart</button>
+          <button>Ver más</button>
         </p>
       </div>
     </article>
