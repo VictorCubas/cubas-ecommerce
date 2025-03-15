@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { getProducts } from "../mock/asynData";
 import EventoList from "./EventoList";
 import CustomSpinner from "./CustomSpinner.jsx";
+import FetchApi from "../ejemplos/FetchApi.jsx";
 // import PRODUCTOS from '../mock/asynData.jsx';
 
 const ItemListContainer = ({greeting, user}) => {
@@ -33,6 +34,8 @@ const ItemListContainer = ({greeting, user}) => {
             {loading && 
                  <CustomSpinner/>}
             {!loading && <EventoList eventos={data}/>}
+
+            <FetchApi />
         </main>
     )
 }
