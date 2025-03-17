@@ -11,7 +11,7 @@ const productos = [
         description: 'Complejo Deportivo Poyos',
         place: 'Complejo Deportivo Poyos',
         stock: 10,
-        category: 'nuevos',
+        category: 'conciertos',
         date: '04/05/2025',
         image: evento1
     },
@@ -22,7 +22,7 @@ const productos = [
         description: 'Partido por la date 13 de las Eliminatorias Sudamericanas',
         place: 'Estadio Defensores del Chaco',
         stock: 10,
-        category: 'ofertas',
+        category: 'deportes',
         date: '20/03/2025',
         image: evento2
     },
@@ -33,7 +33,7 @@ const productos = [
         description: 'Teatro Latino',
         place: 'Teatro Latino',
         stock: 10,
-        category: 'mas vendidos',
+        category: 'teatros',
         date: '28/03/2025',
         image: evento3
     },
@@ -44,7 +44,7 @@ const productos = [
         description: 'Segunda Edición, saldrá a escena con dos protagonistas pesados! River y Talleres se verán las caras en busca de un nuevo título, en una final.',
         place: 'La Nueva Olla',
         stock: 10,
-        category: 'mas vendidos',
+        category: 'deportes',
         date: '28/03/2025',
         image: evento4
     },
@@ -55,7 +55,7 @@ const productos = [
         description: 'Complejo Deportivo Poyos',
         place: 'Complejo Deportivo Poyos',
         stock: 10,
-        category: 'nuevos',
+        category: 'conciertos',
         date: '04/05/2025',
         image: evento1
     },
@@ -66,7 +66,7 @@ const productos = [
         description: 'Partido por la date 13 de las Eliminatorias Sudamericanas',
         place: 'Estadio Defensores del Chaco',
         stock: 10,
-        category: 'ofertas',
+        category: 'deportes',
         date: '20/03/2025',
         image: evento2
     },
@@ -77,7 +77,7 @@ const productos = [
         description: 'Teatro Latino',
         place: 'Teatro Latino',
         stock: 10,
-        category: 'mas vendidos',
+        category: 'teatros',
         date: '28/03/2025',
         image: evento3
     },
@@ -88,7 +88,7 @@ const productos = [
         description: 'Segunda Edición, saldrá a escena con dos protagonistas pesados! River y Talleres se verán las caras en busca de un nuevo título, en una final.',
         place: 'La Nueva Olla',
         stock: 10,
-        category: 'mas vendidos',
+        category: 'deportes',
         date: '28/03/2025',
         image: evento4
     },
@@ -99,7 +99,7 @@ const productos = [
         description: 'Complejo Deportivo Poyos',
         place: 'Complejo Deportivo Poyos',
         stock: 10,
-        category: 'nuevos',
+        category: 'conciertos',
         date: '04/05/2025',
         image: evento1
     },
@@ -110,7 +110,7 @@ const productos = [
         description: 'Partido por la date 13 de las Eliminatorias Sudamericanas',
         place: 'Estadio Defensores del Chaco',
         stock: 10,
-        category: 'ofertas',
+        category: 'deportes',
         date: '20/03/2025',
         image: evento2
     },
@@ -121,7 +121,7 @@ const productos = [
         description: 'Teatro Latino',
         place: 'Teatro Latino',
         stock: 10,
-        category: 'mas vendidos',
+        category: 'teatro',
         date: '28/03/2025',
         image: evento3
     },
@@ -132,7 +132,7 @@ const productos = [
         description: 'Segunda Edición, saldrá a escena con dos protagonistas pesados! River y Talleres se verán las caras en busca de un nuevo título, en una final.',
         place: 'La Nueva Olla',
         stock: 10,
-        category: 'mas vendidos',
+        category: 'deportes',
         date: '28/03/2025',
         image: evento4
     },
@@ -151,5 +151,27 @@ export const getProducts = () => {
                 resolve(productos);
             }
         }, 3000);
+    });
+};
+
+export const getProductById = (id) => {
+    console.log(productos.filter(item => item.id === id.toString()));
+    return new Promise((resolve, reject) => {
+        let error = false;
+
+        setTimeout(() => {
+            if(error){
+                reject('No hay data');
+            }
+            else{
+                const event = productos.filter(item => item.id === id)
+                if(event.length > 0){
+                    resolve(event[0]);
+                }
+                else{
+                    reject('No hay data');
+                }
+            }
+        }, 2000);
     });
 };
