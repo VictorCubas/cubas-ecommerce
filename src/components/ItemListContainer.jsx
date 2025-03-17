@@ -2,11 +2,13 @@ import { useEffect, useState } from "react"
 import { getProducts } from "../mock/asynData";
 import EventoList from "./EventoList";
 import CustomSpinner from "./CustomSpinner.jsx";
+import { useParams } from "react-router-dom";
 // import PRODUCTOS from '../mock/asynData.jsx';
 
 const ItemListContainer = ({greeting, user}) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
+    const {categoryId} = useParams();
 
 
    useEffect(()=>{
@@ -14,8 +16,14 @@ const ItemListContainer = ({greeting, user}) => {
 
         const getEventos = async () => {
             try {
-                const response = await getProducts();
-                setData(response);
+                const eventos = await getProducts();
+                if(categoryId){
+                    const eventosCategoria = eventos.filter(event => event.category === categoryId)
+                    setData(eventosCategoria);
+                }
+                else{
+                    setData(eventos);
+                }
             } catch (error) {
                 
             }finally{
@@ -24,16 +32,15 @@ const ItemListContainer = ({greeting, user}) => {
         };
 
         getEventos();
-   },[])
+   },[categoryId])
 
     return(
-        <main className="mt-6 pt-5">
+        <>
             <h1 className="text-lg font-bold uppercase text-white">{greeting}</h1>
 
-            {loading && 
-                 <CustomSpinner/>}
+            {loading &&  <CustomSpinner/>}
             {!loading && <EventoList eventos={data}/>}
-        </main>
+        </>
     )
 }
 
