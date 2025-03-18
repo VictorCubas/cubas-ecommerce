@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import CartWidget from "./CartWidget";
 import { TiTicket } from "react-icons/ti";
+import { NavLink } from "react-router-dom";
 
 import {
     Navbar,
@@ -11,37 +12,40 @@ import {
   } from "@material-tailwind/react";
 
 const NavBar = () => {
-    const [openNav, setOpenNav] = useState(false);
- 
-    // useEffect propio del codigo proveido por material tailwind
-    useEffect(() => {
-      window.addEventListener(
-        "resize",
-        () => window.innerWidth >= 960 && setOpenNav(false),
-      );
-    }, []);
+  const [openNav, setOpenNav] = useState(false);
+  
+  // useEffect propio del codigo proveido por material tailwind
+  useEffect(() => {
+    window.addEventListener(
+      "resize",
+      () => window.innerWidth >= 960 && setOpenNav(false),
+    );
+  }, []);
+
+  let cssDefault = 'flex items-center font-bold text-lg';
  
   const navList = (
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
         as="li"
-        variant="small"
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center text-blue-500 font-bold">
+        <NavLink to='/category/deportes' 
+          className={({isActive}) => isActive ? `${cssDefault} text-indigo-700`: cssDefault}
+          >
           Deportes
-        </a>
+        </NavLink>
       </Typography>
       <Typography
         as="li"
-        variant="small"
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center font-bold">
+        <NavLink to="/category/conciertos" 
+          className={({isActive}) => isActive ? `${cssDefault} text-indigo-700`: cssDefault}>
           Conciertos
-        </a>
+        </NavLink>
       </Typography>
       <Typography
         as="li"
@@ -49,19 +53,20 @@ const NavBar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center font-bold">
+        <NavLink to="/category/teatros" 
+          className={({isActive}) => isActive ? `${cssDefault} text-indigo-700`: cssDefault}>
           Teatro
-        </a>
+        </NavLink>
       </Typography>
       <Typography
         as="li"
-        variant="small"
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center font-bold">
+        <NavLink to='/category/entretenimientos' 
+          className={({isActive}) => isActive ? `${cssDefault} text-indigo-700`: cssDefault}>
           Entretenimiento
-        </a>
+        </NavLink>
       </Typography>
     </ul>
   );
@@ -71,9 +76,9 @@ const NavBar = () => {
       <Navbar className="navbar-container sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4 bg-cyan-100">
         <div className="flex items-center justify-between text-blue-gray-900">
           <Typography
-            as="a"
-            href="#"
             className="mr-4 cursor-pointer py-1.5 font-extrabold text-2xl flex items-center"
+            as={NavLink}
+            to="/"
           >
             <span className="text-green-700 flex items-center"><TiTicket />TICKET</span>POINT
           </Typography>

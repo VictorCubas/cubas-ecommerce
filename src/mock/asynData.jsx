@@ -165,12 +165,7 @@ export const getProductById = (id) => {
             }
             else{
                 const event = productos.filter(item => item.id === id)
-                if(event.length > 0){
-                    resolve(event[0]);
-                }
-                else{
-                    reject('No hay data');
-                }
+                resolve(event)
             }
         }, 2000);
     });

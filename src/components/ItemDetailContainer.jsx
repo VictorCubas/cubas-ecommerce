@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../mock/asynData';
 import CustomSpinner from './CustomSpinner';
+import ItemDetail from './ItemDetail';
 
 
 const ItemDetailContainer = () => {
@@ -17,7 +18,10 @@ const ItemDetailContainer = () => {
         const getEvento = async () => {
             try {
                 const response = await getProductById(eventId);
-                setEvent(response);
+                if(response.length > 0){
+                    setEvent(response[0]);
+                }
+
             } catch (error) {
                 setError(error);
             }finally{
@@ -30,17 +34,15 @@ const ItemDetailContainer = () => {
 
     return (
         <>
-            <h1 className="text-lg font-bold uppercase text-white">ItemDetailContainer</h1>
-
             {loading &&  <CustomSpinner/>}
-            {!loading && event && <div className="text-lg font-bold uppercase text-white">
-                <p>{event.name}</p>
-                <p>${event.price}</p>
-                <p>{event.description}</p>
-                <p>{event.place}</p>
-                <p>{event.date}</p>
-                <img src={event.image} alt={event.name} />
-            </div>}
+            {!loading && error && <>
+                <p>Algo Salio mal!</p>
+                <p>Vuelva a intentarlo</p></>}
+
+            {!loading && !event && <div className="mt-5 pt-5 font-bold uppercase text-white text-center w-full text-2xl">
+                    No hay datos por mostrar
+                </div>}
+            {!loading && event && <ItemDetail event={event} />}
         </>
     )
 }

@@ -36,7 +36,10 @@ const ItemListContainer = ({greeting, user}) => {
 
     return(
         <>
-            <h1 className="text-lg font-bold uppercase text-white">{greeting}</h1>
+            <h1 className="pl-5 ml-5 text-xl font-bold uppercase text-white">
+                {greeting}
+                {categoryId && <span className="text-red-200"> {categoryId}</span>}
+            </h1>
 
             {loading &&  <CustomSpinner/>}
             {!loading && <EventoList eventos={data}/>}

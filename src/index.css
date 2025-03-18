@@ -115,7 +115,7 @@ body {
   text-align: right;
 }
 
-.product-actions button {
+.product-actions .button {
   background: #f4b115;
   border: none;
   border-radius: 5px;
@@ -125,7 +125,7 @@ body {
   cursor: pointer;
 }
 
-.product-actions button:hover {
+.product-actions .button:hover {
   background: #f5b744;
 }
 
