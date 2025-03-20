@@ -137,3 +137,7 @@ body {
   align-items: center;
   overflow: hidden !important;
 }
+
+.screen-height{
+  height: 80vh;
+}

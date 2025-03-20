@@ -154,8 +154,8 @@ export const getProducts = () => {
     });
 };
 
-export const getProductById = (id) => {
-    console.log(productos.filter(item => item.id === id.toString()));
+export const getProductById = (categoryId, id) => {
+    
     return new Promise((resolve, reject) => {
         let error = false;
 
@@ -164,7 +164,7 @@ export const getProductById = (id) => {
                 reject('No hay data');
             }
             else{
-                const event = productos.filter(item => item.id === id)
+                const event = productos.filter(item => item.category === categoryId && item.id === id.toString() );
                 resolve(event)
             }
         }, 2000);

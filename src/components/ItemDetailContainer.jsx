@@ -10,14 +10,17 @@ const ItemDetailContainer = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const {eventId} = useParams();
+    const {categoryId, eventId} = useParams();
+
+    console.log('url param eventId: ', eventId);
+    console.log('url param categoryId: ', categoryId);
 
     useEffect(()=>{
         setLoading(true);
 
         const getEvento = async () => {
             try {
-                const response = await getProductById(eventId);
+                const response = await getProductById(categoryId, eventId);
                 if(response.length > 0){
                     setEvent(response[0]);
                 }
@@ -40,7 +43,8 @@ const ItemDetailContainer = () => {
                 <p>Vuelva a intentarlo</p></>}
 
             {!loading && !event && <div className="mt-5 pt-5 font-bold uppercase text-white text-center w-full text-2xl">
-                    No hay datos por mostrar
+                    <p>No hay datos por mostrar</p>
+                    <p>Favor verifique el enlace</p>
                 </div>}
             {!loading && event && <ItemDetail event={event} />}
         </>
