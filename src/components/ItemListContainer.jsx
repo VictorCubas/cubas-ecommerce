@@ -8,8 +8,6 @@ import { useFetch } from "../hooks/useFetch.js";
 const ItemListContainer = ({greeting, user}) => {
     const {categoryId} = useParams();
 
-    console.log('url param cateria: ', categoryId);
-
     //custom hook
     const {loading, 
         fetchedData: data, 

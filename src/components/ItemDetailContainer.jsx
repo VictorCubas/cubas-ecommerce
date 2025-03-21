@@ -9,9 +9,6 @@ import { useFetchById } from '../hooks/useFetchById';
 const ItemDetailContainer = () => {
     const {categoryId, eventId} = useParams();
 
-    console.log('url param eventId: ', eventId);
-    console.log('url param categoryId: ', categoryId);
-
     //custom hook
     const {loading, 
             fetchedData: event, 
