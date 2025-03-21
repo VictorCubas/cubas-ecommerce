@@ -3,37 +3,20 @@ import { useParams } from 'react-router-dom';
 import { getProductById } from '../mock/asynData';
 import CustomSpinner from './CustomSpinner';
 import ItemDetail from './ItemDetail';
+import { useFetchById } from '../hooks/useFetchById';
 
 
 const ItemDetailContainer = () => {
-    const [event, setEvent] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-
     const {categoryId, eventId} = useParams();
 
     console.log('url param eventId: ', eventId);
     console.log('url param categoryId: ', categoryId);
 
-    useEffect(()=>{
-        setLoading(true);
-
-        const getEvento = async () => {
-            try {
-                const response = await getProductById(categoryId, eventId);
-                if(response.length > 0){
-                    setEvent(response[0]);
-                }
-
-            } catch (error) {
-                setError(error);
-            }finally{
-                setLoading(false);
-            }
-        };
-
-        getEvento();
-    },[eventId])
+    //custom hook
+    const {loading, 
+            fetchedData: event, 
+            setFetchedData: setEvent,
+            error} = useFetchById(getProductById, categoryId, eventId, []);
 
     return (
         <>
