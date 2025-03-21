@@ -2,38 +2,30 @@ import { useEffect, useState } from "react"
 import { getProducts } from "../mock/asynData";
 import EventoList from "./EventoList";
 import CustomSpinner from "./CustomSpinner.jsx";
-// import PRODUCTOS from '../mock/asynData.jsx';
+import { useParams } from "react-router-dom";
+import { useFetch } from "../hooks/useFetch.js";
 
 const ItemListContainer = ({greeting, user}) => {
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const {categoryId} = useParams();
 
+    console.log('url param cateria: ', categoryId);
 
-   useEffect(()=>{
-        setLoading(true);
-
-        const getEventos = async () => {
-            try {
-                const response = await getProducts();
-                setData(response);
-            } catch (error) {
-                
-            }finally{
-                setLoading(false);
-            }
-        };
-
-        getEventos();
-   },[])
+    //custom hook
+    const {loading, 
+        fetchedData: data, 
+        setFetchedData: setData,
+        error} = useFetch(getProducts, categoryId, []);
 
     return(
-        <main className="mt-6 pt-5">
-            <h1 className="text-lg font-bold uppercase text-white">{greeting}</h1>
+        <>
+            <h1 className="pl-5 ml-5 text-xl font-bold uppercase text-white">
+                {greeting}
+                {categoryId && <span className="text-red-200"> {categoryId}</span>}
+            </h1>
 
-            {loading && 
-                 <CustomSpinner/>}
+            {loading &&  <CustomSpinner/>}
             {!loading && <EventoList eventos={data}/>}
-        </main>
+        </>
     )
 }
 
