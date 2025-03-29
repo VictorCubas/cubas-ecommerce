@@ -2,8 +2,13 @@ import { MdOutlineShoppingCart } from "react-icons/md"
 import {
     Button,
   } from "@material-tailwind/react";
+import { CartContext } from "../context/CartContext";
+import { useContext } from "react";
+import { useCart } from "../hooks/useCart";
 
 const CartWidget = () => {
+    const {cart, setCart} = useCart()
+
     return(
         <Button
             variant="gradient"
@@ -15,7 +20,7 @@ const CartWidget = () => {
                     <MdOutlineShoppingCart />
                 </div>
                 <span className="absolute top-1 right-0 grid min-h-[24px] min-w-[24px] translate-x-2/4 -translate-y-2/4 place-items-center rounded-full bg-red-600 py-1 px-1 text-xs text-white">
-                5
+                 {cart.length}
                 </span>
             </div>
         </Button>

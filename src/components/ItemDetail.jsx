@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import ItemCounter from './ItemCounter'
+
 import {
   Card,
   CardHeader,
@@ -7,11 +8,20 @@ import {
   CardFooter,
   Typography,
   Button,
+  NavLink
 } from "@material-tailwind/react";
+import { CartContext } from '../context/CartContext';
+import { Link } from 'react-router-dom';
+
 
 const ItemDetail = ({event}) => {
+  const {addToCart} = useContext(CartContext);
+  const [purchase, setPurchase] = useState(false);
+
+
   const onAdd = (quantity) => {
-    alert(`Agregaste ${quantity} unidades al carrito`);
+    addToCart(event, quantity);
+    setPurchase(true);
   }
 
   return (
@@ -45,7 +55,13 @@ const ItemDetail = ({event}) => {
             {event.date}
           </Typography>
 
-          <ItemCounter stock={event.stock} addItemToCart={onAdd}/>
+          {/* <Link to='carrito'>Ir al carrito</Link>  */}
+          {purchase ? 
+              <Link to='/cart' className='text-xs w-32 font-bold text-black bg-amber-400 px-4 py-3 rounded-md hover:bg-amber-500
+                                  flex items-center justify-center'>IR AL CARRITO</Link>
+              :
+              <ItemCounter stock={event.stock} addItemToCart={onAdd}/>
+              }
         </CardBody>
     </Card>
 
