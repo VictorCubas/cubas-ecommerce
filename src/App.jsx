@@ -7,11 +7,12 @@ import { ErrorPage } from './components/ErrorPage'
 import { CartContextProvider } from './context/CartContext'
 import CartContainer from './components/CartContainer'
 import { useEffect } from 'react'
-import { getItems } from './firebase'
+import Checkout from './components/Checkout'
+// import { getItems } from './service/firebase'
 
 function App() {
   useEffect(() => {
-    getItems();
+    // getItems();
   }, []);
 
   return (
@@ -26,6 +27,7 @@ function App() {
               <Route path='/category/:categoryId' element={<ItemListContainer greeting='Bienvenido A categoria'/>}/>
               <Route path='/category/:categoryId/:eventId' element={<ItemDetailContainer />}/>
               <Route path='/cart' element={<CartContainer />}/>
+              <Route path='/checkout' element={<Checkout />}/>
               <Route path='*' element={<ErrorPage/>}/>
             </Routes>
           </main>
