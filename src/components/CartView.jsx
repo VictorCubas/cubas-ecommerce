@@ -1,6 +1,10 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import { Card, CardBody, Typography, Avatar } from "@material-tailwind/react";
+import { CiTrash } from "react-icons/ci";
+import { IconButton } from "@material-tailwind/react";
+import CartItem from './CartItem';
+
 
 
 const CartView = () => {
@@ -41,32 +45,9 @@ const CartView = () => {
           </Typography>
         </div>
         <div className="divide-y divide-gray-200">
-          {cart.map(({ id, name, quantity, price, image, description }) => (
-            <div
-              key={id}
-              className="flex items-center justify-between pb-3 pt-3 last:pb-0"
-            >
-              <div className="flex items-center gap-x-3">
-                {/* <Avatar size="xl" src={image} alt={name} /> */}
-                <div className="w-44 h-28 overflow-hidden rounded-lg">
-                  <img src={image} alt={name} className="w-full h-full object-cover" />
-                </div>
-                <div>
-                  <Typography color="blue-gray" variant="h6">
-                    {name}
-                  </Typography>
-                  <Typography color="blue-gray" variant="h6">
-                    {description}
-                  </Typography>
-                  <Typography variant="small" color="gray">
-                    {quantity}
-                  </Typography>
-                </div>
-              </div>
-              <Typography color="blue-gray" variant="h6">
-                ${price}
-              </Typography>
-            </div>
+          {cart.map((evento) => (
+
+            <CartItem key={evento.id} evento={evento}/>
           ))}
         </div>
       </CardBody>
