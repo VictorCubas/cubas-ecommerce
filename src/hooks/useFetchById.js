@@ -4,21 +4,30 @@ export const useFetchById = (fetchFn, categoryId, eventId, initialValue) => { //
     const [loading, setLoading] = useState();
     const [error, setError] = useState(null);
     const [fetchedData, setFetchedData] = useState(initialValue); //generic name
+    const [invalid, setInvalid] = useState(false); //generic name
+
 
     useEffect(() => {
         setLoading(true);
         
           const fetchData = async () => {
             try {
-              const response = await fetchFn(categoryId, eventId); //generic name
-              if(response.length > 0){
-                setFetchedData(response[0]);
+              const responseDoc = await fetchFn(categoryId, eventId); //generic name
+              if(responseDoc.exists()){
+                const newDate = formatDate(responseDoc.data().date);
+                setFetchedData({
+                  id: responseDoc.id,
+                  ...responseDoc.data(),
+                  date: newDate //reset the date
+                  });
               }
               
             } catch (error) {
               setError({
                 message: error.message || 'Ocurrio algo innecesperado.'
               });
+              
+              setInvalid(true)
             }finally{
               setLoading(false);
             }
@@ -28,10 +37,22 @@ export const useFetchById = (fetchFn, categoryId, eventId, initialValue) => { //
     }, [fetchFn, categoryId, eventId])
 
 
+    /**
+     * Agrega un formato a la fecha
+     * @param {*} timestamp 
+     * @returns la fecha formateada
+     */
+    const formatDate = (timestamp) => {
+      const date = new Date(timestamp.seconds * 1000); // Convert seconds to milliseconds
+      return date.toLocaleDateString("es-ES", { day: "2-digit", month: "2-digit", year: "numeric" });
+    };
+
+
     return {
         loading,
         fetchedData,
         setFetchedData,
-        error
+        error,
+        invalid
     }
 }

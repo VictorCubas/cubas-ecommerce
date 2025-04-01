@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { getProductById } from '../mock/asynData';
+import { getProductByIdFirebase  } from '../mock/asynData';
 import CustomSpinner from './CustomSpinner';
 import ItemDetail from './ItemDetail';
 import { useFetchById } from '../hooks/useFetchById';
@@ -13,7 +13,8 @@ const ItemDetailContainer = () => {
     const {loading, 
             fetchedData: event, 
             setFetchedData: setEvent,
-            error} = useFetchById(getProductById, categoryId, eventId, []);
+            error,
+            invalid} = useFetchById(getProductByIdFirebase, categoryId, eventId, []);
 
     return (
         <>

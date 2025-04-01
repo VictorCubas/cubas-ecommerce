@@ -18,7 +18,7 @@ const ItemDetail = ({event}) => {
   const {addToCart} = useContext(CartContext);
   const [purchase, setPurchase] = useState(false);
 
-
+  console.log('event retrieved *: ', event);
   const onAdd = (quantity) => {
     addToCart(event, quantity);
     setPurchase(true);
@@ -57,8 +57,13 @@ const ItemDetail = ({event}) => {
 
           {/* <Link to='carrito'>Ir al carrito</Link>  */}
           {purchase ? 
-              <Link to='/cart' className='text-xs w-32 font-bold text-black bg-amber-400 px-4 py-3 rounded-md hover:bg-amber-500
+                <div>
+                  <Link to='/' className='text-xs w-32 font-bold text-black bg-amber-400 px-4 py-3 rounded-md hover:bg-amber-500
+                                  flex items-center justify-center'>SEGUIR COMPRANDO</Link>
+
+                  <Link to='/cart' className='text-xs w-32 font-bold text-black bg-amber-400 px-4 py-3 rounded-md hover:bg-amber-500
                                   flex items-center justify-center'>IR AL CARRITO</Link>
+                </div>
               :
               <ItemCounter stock={event.stock} addItemToCart={onAdd}/>
               }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Evento = ({evento}) => {
+  console.log('evento 1: ', evento);
   return (
     // <p className="text-white" >{evento.name}</p>
     <article className="product">

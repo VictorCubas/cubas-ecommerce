@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useFetch = (fetchFn, id, initialValue) => { //fetchFn --> generic name
+export const useFetch = (fetchFn, categoryId, initialValue) => { //fetchFn --> generic name
     const [loading, setLoading] = useState();
     const [error, setError] = useState(null);
     const [fetchedData, setFetchedData] = useState(initialValue); //generic name
@@ -11,12 +11,26 @@ export const useFetch = (fetchFn, id, initialValue) => { //fetchFn --> generic n
           const fetchData = async () => {
             try {
               const data = await fetchFn(); //generic name
-              if(id){
-                  const eventosCategoria = data.filter(event => event.category === id)
-                  setFetchedData(eventosCategoria);
+              if(categoryId){
+                  // const eventosCategoria = data.filter(event => event.category === id)
+                  // setFetchedData(eventosCategoria);
+                  const list = data.docs.map((doc) => {
+                    const newDate = formatDate(responseDoc.data().date);
+                    return {
+                      id: doc.id, ...doc.data(), date: newDate
+                    }
+                  });
+                  setFetchedData(list); 
               }
               else{
-                  setFetchedData(data); 
+                  const list = data.docs.map((doc) => {
+                    console.log('doc.data(): ', doc.data())
+                    const newDate = formatDate(doc.data().date);
+                    return {
+                      id: doc.id, ...doc.data(), date: newDate
+                    }
+                  });
+                  setFetchedData(list); 
               }
               
             } catch (error) {
@@ -29,7 +43,18 @@ export const useFetch = (fetchFn, id, initialValue) => { //fetchFn --> generic n
           }
     
           fetchData();
-    }, [fetchFn, id])
+    }, [fetchFn, categoryId])
+
+
+    /**
+     * Agrega un formato a la fecha
+     * @param {*} timestamp 
+     * @returns la fecha formateada
+     */
+    const formatDate = (timestamp) => {
+      const date = new Date(timestamp.seconds * 1000); // Convert seconds to milliseconds
+      return date.toLocaleDateString("es-ES", { day: "2-digit", month: "2-digit", year: "numeric" });
+    };
 
 
     return {
