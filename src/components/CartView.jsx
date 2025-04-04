@@ -1,55 +1,43 @@
-import React, { useContext } from 'react';
-import { CartContext } from '../context/CartContext';
-import { Card, CardBody, Typography, Avatar } from "@material-tailwind/react";
-import { CiTrash } from "react-icons/ci";
-import { IconButton } from "@material-tailwind/react";
+import React from 'react';
+import { Card, CardBody, Typography } from "@material-tailwind/react";
 import CartItem from './CartItem';
+import { useCart } from '../hooks/useCart';
 
 
 
 const CartView = () => {
-    const {cart, removeItem, clear} = useContext(CartContext);
+    const {cart, clearCart, cartTotal} = useCart();
 
   return (
-    // <div className='mt-5 pt-5 font-bold uppercase text-white text-center w-full text-xl'>
-    //     <h2>Tu carrito</h2>
-
-    //     <div>
-    //         {cart.map((compra) => <div key={compra.id}>
-    //             <p>{compra.name}</p>
-    //             <p>{compra.quantity}</p>
-    //             <p>{compra.price}</p>
-    //             <button onClick={() => removeItem(compra.id)}>X</button>
-    //         </div>)}
-    //     </div>
-
-    //     <button onClick={clear}>Borrar todo el carrito</button>
-    //     <button>Seguir comprando</button>
-    //     <button>Terminar compra</button>
-    // </div>
     <div className='flex justify-center'>
-      <Card className="w-3/5">
+      <Card className="w-5/6">
       <CardBody>
         <div className="mb-4 flex items-center justify-between">
           <Typography variant="h5" color="blue-gray" className="">
             Tu carrito
           </Typography>
           <Typography
-            as="a"
-            href="#"
             variant="small"
             color="blue"
             className="font-bold"
+            role='button'
+            onClick={clearCart}
           >
-            View all
+            Limpiar carrito
           </Typography>
         </div>
-        <div className="divide-y divide-gray-200">
+        <div className="divide-y divide-gray-200 ">
           {cart.map((evento) => (
 
             <CartItem key={evento.id} evento={evento}/>
           ))}
         </div>
+
+          <div className='pt-5 mt-5 flex justify-end w-ful'>
+            <Typography color="blue-gray" variant="h4">
+                  Total: ${cartTotal()},00
+            </Typography>
+          </div>
       </CardBody>
       </Card>
     </div>
