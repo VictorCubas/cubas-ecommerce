@@ -23,10 +23,12 @@ export const useFetchById = (fetchFn, categoryId, eventId, initialValue) => { //
                   });
               }
               else{
+                //producto inexistente
                 setInvalid(true)
               }
               
             } catch (error) {
+              //en caso de que la categorria sea invalida o algun error en el http de firerbase
               setError({
                 message: error.message || 'Ocurrio algo inesperado.'
               });
