@@ -13,21 +13,24 @@ export const useFetchById = (fetchFn, categoryId, eventId, initialValue) => { //
           const fetchData = async () => {
             try {
               const responseDoc = await fetchFn(categoryId, eventId); //generic name
+              
               if(responseDoc.exists()){
                 const newDate = formatDate(responseDoc.data().date);
                 setFetchedData({
                   id: responseDoc.id,
                   ...responseDoc.data(),
-                  date: newDate //reset the date
+                  date: newDate //se formatea el date
                   });
+              }
+              else{
+                setInvalid(true)
               }
               
             } catch (error) {
               setError({
-                message: error.message || 'Ocurrio algo innecesperado.'
+                message: error.message || 'Ocurrio algo inesperado.'
               });
               
-              setInvalid(true)
             }finally{
               setLoading(false);
             }

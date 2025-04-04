@@ -10,26 +10,29 @@ export const useFetch = (fetchFn, categoryId, initialValue) => { //fetchFn --> g
         
           const fetchData = async () => {
             try {
-              const data = await fetchFn(); //generic name
+              const res = await fetchFn(); //generic name
               if(categoryId){
-                  // const eventosCategoria = data.filter(event => event.category === id)
-                  // setFetchedData(eventosCategoria);
-                  const list = data.docs.map((doc) => {
-                    const newDate = formatDate(responseDoc.data().date);
-                    return {
-                      id: doc.id, ...doc.data(), date: newDate
-                    }
-                  });
-                  setFetchedData(list); 
-              }
-              else{
-                  const list = data.docs.map((doc) => {
-                    console.log('doc.data(): ', doc.data())
+                  //se filtra por categoria
+                  const listFilter = res.docs.filter((doc) => doc.data().category === categoryId);
+                  
+                  //se modifica cada item para formatear la fecha
+                  const listMapped = listFilter.map((doc) => {
                     const newDate = formatDate(doc.data().date);
                     return {
                       id: doc.id, ...doc.data(), date: newDate
                     }
                   });
+
+                  setFetchedData(listMapped); 
+              }
+              else{
+                  const list = res.docs.map((doc) => {
+                    const newDate = formatDate(doc.data().date);
+                    return {
+                      id: doc.id, ...doc.data(), date: newDate
+                    }
+                  });
+
                   setFetchedData(list); 
               }
               
