@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react"
-import { getProducts } from "../mock/asynData";
+import { getProducts, getProductsFirebase } from "../mock/asynData";
 import EventoList from "./EventoList";
 import CustomSpinner from "./CustomSpinner.jsx";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch.js";
 
+
 const ItemListContainer = ({greeting, user}) => {
     const {categoryId} = useParams();
 
-    //custom hook
     const {loading, 
         fetchedData: data, 
         setFetchedData: setData,
-        error} = useFetch(getProducts, categoryId, []);
+        error} = useFetch(getProductsFirebase, categoryId, []);
 
     return(
         <>
@@ -21,7 +21,7 @@ const ItemListContainer = ({greeting, user}) => {
                 {categoryId && <span className="text-red-200"> {categoryId}</span>}
             </h1>
 
-            {loading &&  <CustomSpinner/>}
+            {loading && <CustomSpinner/>}
             {!loading && <EventoList eventos={data}/>}
         </>
     )
