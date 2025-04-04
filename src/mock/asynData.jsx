@@ -11,6 +11,8 @@ import evento10 from './../assets/evento10.png';
 import evento11 from './../assets/evento11.png';
 import evento12 from './../assets/evento12.png';
 import evento13 from './../assets/evento13.jpg';
+import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
+import { db } from '../service/firebase';
 
 const productos = [
     {
@@ -160,34 +162,61 @@ const productos = [
 ]
 
 
-export const getProducts = () => {
-    return new Promise((resolve, reject) => {
-        let error = false;
-
-        setTimeout(() => {
-            if(error){
-                reject('No hay data');
-            }
-            else{
-                resolve(productos);
-            }
-        }, 3000);
-    });
+export const getProductsFirebase = () => {
+    const itemCollection = collection(db, 'items');
+    return getDocs(itemCollection);    
 };
 
-export const getProductById = (categoryId, id) => {
+const categories = ['deportes', 'conciertos', 'teatro', 'entretenimento']
+
+export const getProductByIdFirebase = (categoryId, id) => {
+    if(isValidCategory(categoryId)){
+        const itemCollection = collection(db, 'items');
+        const docRef = doc(itemCollection, id);
+        return getDoc(docRef);
+    }
+
+    throw new Error('Categoría inválida');
+};
+
+
+const isValidCategory = (categoryId) => {
+    return categories.includes(categoryId);
+}
+
+// export const getProducts = () => {
+//     return new Promise((resolve, reject) => {
+//         let error = false;
+
+//         setTimeout(() => {
+//             if(error){
+//                 reject('No hay data');
+//             }
+//             else{
+//                 resolve(productos);
+//             }
+//         }, 3000);
+//     });
+// };
+
+
+
+// export const getProductById = (categoryId, id) => {
     
-    return new Promise((resolve, reject) => {
-        let error = false;
+//     return new Promise((resolve, reject) => {
+//         let error = false;
 
-        setTimeout(() => {
-            if(error){
-                reject('No hay data');
-            }
-            else{
-                const event = productos.filter(item => item.category === categoryId && item.id === id.toString() );
-                resolve(event)
-            }
-        }, 2000);
-    });
-};
+//         setTimeout(() => {
+//             if(error){
+//                 reject('No hay data');
+//             }
+//             else{
+//                 const event = productos.filter(item => item.category === categoryId && item.id === id.toString() );
+//                 resolve(event)
+//             }
+//         }, 2000);
+//     });
+// };
+
+
+
