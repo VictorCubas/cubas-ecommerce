@@ -43,8 +43,28 @@ export const CartContextProvider = ({children}) => {
     const isInCart = (id) => {
         return cart.some(item => item.id === id);
     }
+
+
+    /**
+     * Calcula el monto total del carrito
+     * @returns total
+     */
+    const cartTotal = () => {
+        return cart.reduce((acc, item) => (acc += item.price * item.quantity), 0);
+    }
+
+
+    /**
+     * Calcula la cantidad de items en el carrito
+     * @returns total cantidad
+     */
+    const cartQuantity = () => {
+        return cart.reduce((acc, item) => (acc += item.quantity), 0);
+    }
+
+
     
-    const contextValue = {cart, setCart, addToCart, clearCart, removeItem}
+    const contextValue = {cart, setCart, addToCart, clearCart, removeItem, cartTotal, cartQuantity}
 
     return (
         <CartContext.Provider value={contextValue}>
