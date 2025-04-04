@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 
 export const useFetchById = (fetchFn, categoryId, eventId, initialValue) => { //fetchFn --> generic name
-    const [loading, setLoading] = useState();
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [fetchedData, setFetchedData] = useState(initialValue); //generic name
     const [invalid, setInvalid] = useState(false); //generic name
 
 
     useEffect(() => {
-        setLoading(true);
+        //si seteamos aqui el loader se produce un parpadeo en el front antes de mostrar
+        //el loader
+        // setLoading(true);
         
           const fetchData = async () => {
             try {
