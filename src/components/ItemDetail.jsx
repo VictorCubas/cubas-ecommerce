@@ -57,7 +57,7 @@ const ItemDetail = ({event}) => {
 
           {/* <Link to='carrito'>Ir al carrito</Link>  */}
           {purchase ? 
-                <div>
+                <div className='flex gap-x-2 pt-4'>
                   <Link to='/' className='text-xs w-32 font-bold text-black bg-amber-400 px-4 py-3 rounded-md hover:bg-amber-500
                                   flex items-center justify-center'>SEGUIR COMPRANDO</Link>
 
