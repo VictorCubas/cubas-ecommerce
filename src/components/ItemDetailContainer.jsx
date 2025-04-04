@@ -19,15 +19,17 @@ const ItemDetailContainer = () => {
     return (
         <>
             {loading &&  <CustomSpinner/>}
-            {!loading && error && <>
-                <p>Algo Salio mal!</p>
-                <p>Vuelva a intentarlo</p></>}
-
-            {!loading && !event && <div className="mt-5 pt-5 font-bold uppercase text-white text-center w-full text-2xl">
+            {!loading && error &&  <div className="mt-5 pt-5 font-bold uppercase text-white text-center w-full text-2xl">
                     <p>No hay datos por mostrar</p>
-                    <p>Favor verifique el enlace</p>
+                    <p>{error.message}</p>
+                </div>
+                }
+
+            {!loading && invalid && <div className="mt-5 pt-5 font-bold uppercase text-white text-center w-full text-2xl">
+                    <p>No hay datos por mostrar</p>
+                    <p>El producto no existe o no se encuentra disponible</p>
                 </div>}
-            {!loading && event && <ItemDetail event={event} />}
+            {!loading && !error && !invalid && <ItemDetail event={event} />}
         </>
     )
 }
