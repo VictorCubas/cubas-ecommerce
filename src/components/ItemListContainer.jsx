@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react"
-import { getProducts, getProductsFirebase } from "../mock/asynData";
+import { getProductsFirebase } from "../mock/asynData";
 import EventoList from "./EventoList";
 import CustomSpinner from "./CustomSpinner.jsx";
 import { useParams } from "react-router-dom";
