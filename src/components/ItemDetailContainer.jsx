@@ -16,20 +16,30 @@ const ItemDetailContainer = () => {
             error,
             invalid} = useFetchById(getProductByIdFirebase, categoryId, eventId, []);
 
-    return (
-        <>
-            {loading &&  <CustomSpinner/>}
-            {!loading && error &&  <div className="mt-5 pt-5 font-bold uppercase text-white text-center w-full text-2xl">
+
+    let content = '';
+    if(loading){
+        content = <CustomSpinner/>;
+    }
+    else if(error){
+        content = <div className="mt-5 pt-5 font-bold uppercase text-white text-center w-full text-2xl">
                     <p>No hay datos por mostrar</p>
                     <p>{error.message}</p>
-                </div>
-                }
-
-            {!loading && invalid && <div className="mt-5 pt-5 font-bold uppercase text-white text-center w-full text-2xl">
+                </div>;
+    }
+    else if(invalid){
+        content = <div className="mt-5 pt-5 font-bold uppercase text-white text-center w-full text-2xl">
                     <p>No hay datos por mostrar</p>
                     <p>El producto no existe o no se encuentra disponible</p>
-                </div>}
-            {!loading && !error && !invalid && <ItemDetail event={event} />}
+                </div>
+    }
+    else{
+        content = <ItemDetail event={event} />
+    }
+
+    return (
+        <>
+            {content}
         </>
     )
 }
