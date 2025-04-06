@@ -4,7 +4,14 @@ export const CartContext = createContext();
 
 export const CartContextProvider = ({children}) => {
     const [cart, setCart] = useState([]);
+    const [accedienteACheckoutVacio, setAccedienteACheckoutVacio] = useState(false);
 
+
+    const toggleCheckoutVacio = () => {
+        setAccedienteACheckoutVacio(prevAccedienteACheckoutVacio => {
+            return !prevAccedienteACheckoutVacio;
+        });
+    }
     
     const addToCart = (itemToAdd, quantity) => {
         setCart(prevCart => {
@@ -64,7 +71,7 @@ export const CartContextProvider = ({children}) => {
 
 
     
-    const contextValue = {cart, setCart, addToCart, clearCart, removeItem, cartTotal, cartQuantity}
+    const contextValue = {cart, setCart, addToCart, clearCart, removeItem, cartTotal, cartQuantity, accedienteACheckoutVacio, toggleCheckoutVacio}
 
     return (
         <CartContext.Provider value={contextValue}>
