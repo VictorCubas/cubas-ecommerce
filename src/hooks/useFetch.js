@@ -10,31 +10,15 @@ export const useFetch = (fetchFn, categoryId, initialValue) => { //fetchFn --> g
         
           const fetchData = async () => {
             try {
-              const res = await fetchFn(); //generic name
-              if(categoryId){
-                  //se filtra por categoria
-                  const listFilter = res.docs.filter((doc) => doc.data().category === categoryId);
-                  
-                  //se modifica cada item para formatear la fecha
-                  const listMapped = listFilter.map((doc) => {
-                    const newDate = formatDate(doc.data().date);
-                    return {
-                      id: doc.id, ...doc.data(), date: newDate
-                    }
-                  });
+              const res = await fetchFn(categoryId); //generic name
+              const list = res.docs.map((doc) => {
+                const newDate = formatDate(doc.data().date);
+                return {
+                  id: doc.id, ...doc.data(), date: newDate
+                }
+              });
 
-                  setFetchedData(listMapped); 
-              }
-              else{
-                  const list = res.docs.map((doc) => {
-                    const newDate = formatDate(doc.data().date);
-                    return {
-                      id: doc.id, ...doc.data(), date: newDate
-                    }
-                  });
-
-                  setFetchedData(list); 
-              }
+              setFetchedData(list); 
               
             } catch (error) {
               setError({
