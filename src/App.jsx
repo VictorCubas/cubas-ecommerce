@@ -11,9 +11,6 @@ import Checkout from './components/Checkout'
 // import { getItems } from './service/firebase'
 
 function App() {
-  useEffect(() => {
-    // getItems();
-  }, []);
 
   return (
     <>
