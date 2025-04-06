@@ -1,7 +1,8 @@
 import React from 'react';
-import { Card, CardBody, Typography } from "@material-tailwind/react";
+import { Card, CardBody, Typography, Button } from "@material-tailwind/react";
 import CartItem from './CartItem';
 import { useCart } from '../hooks/useCart';
+import { Link } from 'react-router-dom';
 
 
 
@@ -25,6 +26,7 @@ const CartView = () => {
           >
             Limpiar carrito
           </Typography>
+
         </div>
         <div className="divide-y divide-gray-200 ">
           {cart.map((evento) => (
@@ -37,6 +39,23 @@ const CartView = () => {
             <Typography color="blue-gray" variant="h4">
                   Total: ${cartTotal()},00
             </Typography>
+          </div>
+
+
+          <div className='flex gap-3 mt-3'>
+            <Link to='/'>
+              <Button color='amber' size="md"
+                  variant="outlined" className='text-gray-800 hover:text-amber-500'>
+                      Seguir comprando 
+              </Button>
+            </Link>
+
+            <Link to='/checkout'>
+              <Button color='amber' size="md"
+                  variant="filled" className='text-gray-800 hover:bg-amber-400'>
+                      Terminar Compra
+              </Button>
+            </Link>
           </div>
       </CardBody>
       </Card>
