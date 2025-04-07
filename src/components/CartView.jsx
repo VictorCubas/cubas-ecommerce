@@ -44,15 +44,15 @@ const CartView = () => {
 
           <div className='flex gap-3 mt-3'>
             <Link to='/'>
-              <Button color='amber' size="md"
+              <Button color='amber' size="lg"
                   variant="outlined" className='text-gray-800 hover:text-amber-500'>
                       Seguir comprando 
               </Button>
             </Link>
 
             <Link to='/checkout'>
-              <Button color='amber' size="md"
-                  variant="filled" className='text-gray-800 hover:bg-amber-400'>
+              <Button color='amber' size="lg"
+                  variant="filled" className='text-white hover:bg-amber-300 text-md font-normal hover:text-orange-800 hover:shadow-none'>
                       Terminar Compra
               </Button>
             </Link>
