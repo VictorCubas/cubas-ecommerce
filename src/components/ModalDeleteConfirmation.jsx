@@ -36,6 +36,7 @@ const ModalDeleteConfirmation = ({handleShowModal}) => {
             }
             size={size || "md"}
             handler={handleOpen}
+            onClose={() => handleShowModal(false)}
           >
             <div className='flex w-full justify-center pt-5 text-3xl text-red-400'>
               <RiAlertLine/>
