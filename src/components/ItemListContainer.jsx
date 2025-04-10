@@ -9,20 +9,6 @@ import { useEffect } from "react";
 
 const ItemListContainer = ({greeting, user}) => {
     const {categoryId} = useParams();
-    const {accedienteACheckoutVacio, toggleCheckoutVacio} = useCart();
-
-
-    //control en caso de que se haya accedido a checkout y cart este vacio
-    useEffect(() => {
-        if(accedienteACheckoutVacio){
-            const duration = 3500;
-            toast.error("Tu carrito aún está vacío", {duration: duration})
-
-            setTimeout(() => {
-                toggleCheckoutVacio();
-            }, duration);
-        }
-    }, []);
 
     const {loading, 
         fetchedData: data, 
@@ -38,11 +24,6 @@ const ItemListContainer = ({greeting, user}) => {
 
             {loading && <CustomSpinner/>}
             {!loading && <EventoList eventos={data}/>}
-
-            {accedienteACheckoutVacio && <Toaster
-                position="bottom-center"
-                reverseOrder={false}
-                />}
         </>
     )
 }
