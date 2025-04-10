@@ -1,5 +1,5 @@
 import { Button } from '@material-tailwind/react';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 const ItemCounter = ({stock, addItemToCart}) => {
     const [count, setCount] = useState(1);
