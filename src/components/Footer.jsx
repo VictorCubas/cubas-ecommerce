@@ -103,9 +103,9 @@ const Footer = () => {
               </div>
               <p className="text-xs text-gray-500">
                 Al suscribirte, aceptas nuestra{" "}
-                <Link to="/politica-privacidad" className="text-green-500 hover:underline">
+                <span role='button' className="text-green-500 hover:underline">
                   política de privacidad
-                </Link>
+                </span>
                 .
               </p>
             </div>
@@ -155,18 +155,18 @@ const Footer = () => {
               © {new Date().getFullYear()} TicketPoint. Todos los derechos reservados.
             </div>
             <div className="flex flex-wrap gap-4 text-sm">
-              <Link a="/terminos-condiciones" className="text-gray-400 hover:text-green-400 transition-colors">
+              <p  role='button' className="text-gray-400 hover:text-green-400 transition-colors">
                 Términos y condiciones
-              </Link>
-              <Link a="/politica-privacidad" className="text-gray-400 hover:text-green-400 transition-colors">
+              </p>
+              <p  role='button' className="text-gray-400 hover:text-green-400 transition-colors">
                 Política de privacidad
-              </Link>
-              <Link a="/politica-cookies" className="text-gray-400 hover:text-green-400 transition-colors">
+              </p>
+              <p  role='button' className="text-gray-400 hover:text-green-400 transition-colors">
                 Política de cookies
-              </Link>
-              <Link a="/politica-reembolsos" className="text-gray-400 hover:text-green-400 transition-colors">
+              </p>
+              <p role='button' className="text-gray-400 hover:text-green-400 transition-colors">
                 Política de reembolsos
-              </Link>
+              </p>
             </div>
           </div>
         </div>
