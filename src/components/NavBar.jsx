@@ -85,7 +85,9 @@ const NavBar = () => {
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
             <div className="flex items-center gap-x-1">
-                <CartWidget />
+              <NavLink to='/cart'>
+                  <CartWidget/>
+              </NavLink>
             </div>
 
             {/* icono de hamburguesa */}
@@ -131,10 +133,6 @@ const NavBar = () => {
 
         <Collapse open={openNav}>
           {navList}
-          <div className="flex items-center gap-x-4">
-              {/* icono de cart */}
-              <CartWidget />
-          </div>
         </Collapse>
       </Navbar>
     </div>

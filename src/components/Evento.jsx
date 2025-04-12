@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Evento = ({evento}) => {
+
   return (
-    // <p className="text-white" >{evento.name}</p>
     <article className="product">
       <img src={evento.image} alt={evento.name} />
       <div className="product-content">
@@ -14,7 +14,6 @@ const Evento = ({evento}) => {
           <p>{evento.date}</p>
         </div>
         <p className='product-actions'>
-          {/* <button onClick={() => addItemToCart(id)}>Add to Cart</button> */}
           
             <Link className='button' to={`/category/${evento.category}/${evento.id}`}>
               Ver más

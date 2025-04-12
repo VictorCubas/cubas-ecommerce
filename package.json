@@ -7,14 +7,19 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prerender": "http-server -c-1 dist"
   },
   "dependencies": {
     "@material-tailwind/react": "^2.1.10",
     "autoprefixer": "^10.4.14",
+    "firebase": "^11.5.0",
+    "http-server": "^14.1.1",
     "postcss": "^8.4.27",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hook-form": "^7.55.0",
+    "react-hot-toast": "^2.5.2",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.3.0"
   },

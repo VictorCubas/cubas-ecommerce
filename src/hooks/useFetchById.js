@@ -1,24 +1,40 @@
 import { useEffect, useState } from "react";
 
 export const useFetchById = (fetchFn, categoryId, eventId, initialValue) => { //fetchFn --> generic name
-    const [loading, setLoading] = useState();
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [fetchedData, setFetchedData] = useState(initialValue); //generic name
+    const [invalid, setInvalid] = useState(false); //generic name
+
 
     useEffect(() => {
-        setLoading(true);
+        //si seteamos aqui el loader se produce un parpadeo en el front antes de mostrar
+        //el loader
+        // setLoading(true);
         
           const fetchData = async () => {
             try {
-              const response = await fetchFn(categoryId, eventId); //generic name
-              if(response.length > 0){
-                setFetchedData(response[0]);
+              const responseDoc = await fetchFn(categoryId, eventId); //generic name
+              
+              if(responseDoc.exists()){
+                const newDate = formatDate(responseDoc.data().date);
+                setFetchedData({
+                  id: responseDoc.id,
+                  ...responseDoc.data(),
+                  date: newDate //se formatea el date
+                  });
+              }
+              else{
+                //producto inexistente
+                setInvalid(true)
               }
               
             } catch (error) {
+              //en caso de que la categorria sea invalida o algun error en el http de firerbase
               setError({
-                message: error.message || 'Ocurrio algo innecesperado.'
+                message: error.message || 'Ocurrio algo inesperado.'
               });
+              
             }finally{
               setLoading(false);
             }
@@ -28,10 +44,22 @@ export const useFetchById = (fetchFn, categoryId, eventId, initialValue) => { //
     }, [fetchFn, categoryId, eventId])
 
 
+    /**
+     * Agrega un formato a la fecha
+     * @param {*} timestamp 
+     * @returns la fecha formateada
+     */
+    const formatDate = (timestamp) => {
+      const date = new Date(timestamp.seconds * 1000); // Convert seconds to milliseconds
+      return date.toLocaleDateString("es-ES", { day: "2-digit", month: "2-digit", year: "numeric" });
+    };
+
+
     return {
         loading,
         fetchedData,
         setFetchedData,
-        error
+        error,
+        invalid
     }
 }

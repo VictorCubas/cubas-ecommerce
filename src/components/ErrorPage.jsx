@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { Typography, Button } from "@material-tailwind/react";
+import { Typography } from "@material-tailwind/react";
 import { FaFlag } from "react-icons/fa6";
 
 
