@@ -8,7 +8,7 @@ import { CartContextProvider } from './context/CartContext'
 import CartContainer from './components/CartContainer'
 import CheckoutFom from './components/CheckoutFom'
 import ToastCheckoutVacio from './components/ToastCheckoutVacio'
-
+import Footer from './components/Footer'
 
 function App() {
 
@@ -18,7 +18,7 @@ function App() {
         <CartContextProvider>
           <NavBar/>
 
-          <main className="mt-6 pt-5">
+          <main className="mt-6 pt-5 min-h-screen">
             <Routes>
               <Route path='/' element={<ItemListContainer greeting='Bienvenido a tu punto de venta de entradas'/>}/>
               <Route path='/category/:categoryId' element={<ItemListContainer greeting='Bienvenido A categoria'/>}/>
@@ -30,6 +30,7 @@ function App() {
           </main>
 
           <ToastCheckoutVacio />
+          <Footer />
 
 
         </CartContextProvider>
