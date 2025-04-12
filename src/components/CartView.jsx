@@ -4,10 +4,6 @@ import {
   CardBody, 
   Typography, 
   Button, 
-  Dialog,
-  DialogHeader,
-  DialogBody,
-  DialogFooter
 } from "@material-tailwind/react";
 
 
@@ -29,6 +25,8 @@ const CartView = () => {
     setShowModalConfirmation(show);
   }
 
+  console.log('cart: ', cart);
+
   return ( 
     <>
       {!showModalConfirmation ? 
@@ -36,18 +34,18 @@ const CartView = () => {
           <Card className="w-5/6">
           <CardBody className='px-1 sm:px-4'>
             <div className="mb-4 flex items-center justify-between">
-              <Typography variant="h5" color="blue-gray" className="">
+              <Typography variant="h5" color="blue-gray">
                 Tu carrito
               </Typography>
-              <Typography
-                variant="small"
-                color="blue"
-                className="font-bold"
-                role='button'
+              <Button
+                variant="outlined"
+                color='red'
+                size='sm'
+                className="font-bold text-red-400"
                 onClick={() => handleShowModal(true)}
               >
                 Limpiar carrito
-              </Typography>
+              </Button>
 
             </div>
             <div className="divide-y-4 divide-gray-200">

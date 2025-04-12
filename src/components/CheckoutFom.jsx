@@ -83,7 +83,7 @@ const CheckoutFom = () => {
     content = <Purchase pagoDetail={pagosDetail}/>
   }
   else{
-    content = <div className='w-full flex justify-center'>
+    content = <div className='w-full flex justify-center py-8'>
                   <div className='flex justify-center items-center sm:w-full lg:w-4/6'>
                       <Card color="white" shadow={false}
                         className='flex justify-center items-center sm:w-5/6 pt-5'>
