@@ -145,3 +145,9 @@ body {
 .cancel-btn{
   border: 1px solid  oklch(70.7% 0.022 261.325);
 }
+
+@media (480px < width < 540px) {
+  .btn-cart .btn{
+    padding: 0.5rem;
+  }
+}
