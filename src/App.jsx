@@ -6,9 +6,9 @@ import ItemDetailContainer from './components/ItemDetailContainer'
 import { ErrorPage } from './components/ErrorPage'
 import { CartContextProvider } from './context/CartContext'
 import CartContainer from './components/CartContainer'
-import { useEffect } from 'react'
-import Checkout from './components/Checkout'
-// import { getItems } from './service/firebase'
+import CheckoutFom from './components/CheckoutFom'
+import ToastCheckoutVacio from './components/ToastCheckoutVacio'
+
 
 function App() {
 
@@ -20,14 +20,18 @@ function App() {
 
           <main className="mt-6 pt-5">
             <Routes>
-              <Route path='/' element={<ItemListContainer greeting='Bienvenido'/>}/>
+              <Route path='/' element={<ItemListContainer greeting='Bienvenido a tu punto de venta de entradas'/>}/>
               <Route path='/category/:categoryId' element={<ItemListContainer greeting='Bienvenido A categoria'/>}/>
               <Route path='/category/:categoryId/:eventId' element={<ItemDetailContainer />}/>
               <Route path='/cart' element={<CartContainer />}/>
-              <Route path='/checkout' element={<Checkout />}/>
+              <Route path='/checkout' element={<CheckoutFom />}/>
               <Route path='*' element={<ErrorPage/>}/>
             </Routes>
           </main>
+
+          <ToastCheckoutVacio />
+
+
         </CartContextProvider>
         {/* footer */}
       </BrowserRouter>

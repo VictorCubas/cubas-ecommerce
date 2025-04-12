@@ -41,13 +41,13 @@ const ModalDeleteConfirmation = ({handleShowModal}) => {
             <div className='flex w-full justify-center pt-5 text-3xl text-red-400'>
               <RiAlertLine/>
             </div>
-            <DialogHeader className='mt-2 pb-2 w-full flex justify-center'>Confirmación de operación</DialogHeader>
+            <DialogHeader className='mt-2 pb-2 w-full flex justify-center text-center'>Confirmación de operación</DialogHeader>
             <DialogBody className='text-center'>
               <p className='text-lg'>Estás seguro que deseas limpiar todos los items del carrito?</p>
 
               <h5 className='mt-2 text-sm'>Esta acción no se puede deshacer.</h5>
             </DialogBody>
-            <DialogFooter className='flex justify-center'>
+            <DialogFooter className='flex justify-center gap-1'>
               <Button
                 variant="outlined"
                 onClick={handleShowModalInner}
