@@ -34,7 +34,7 @@ const CartView = () => {
       {!showModalConfirmation ? 
         <div className='flex justify-center'>
           <Card className="w-5/6">
-          <CardBody>
+          <CardBody className='px-1 sm:px-4'>
             <div className="mb-4 flex items-center justify-between">
               <Typography variant="h5" color="blue-gray" className="">
                 Tu carrito
@@ -50,7 +50,7 @@ const CartView = () => {
               </Typography>
 
             </div>
-            <div className="divide-y divide-gray-200 ">
+            <div className="divide-y-4 divide-gray-200">
               {cart.map((evento) => (
 
                 <CartItem key={evento.id} evento={evento}/>
@@ -64,17 +64,18 @@ const CartView = () => {
               </div>
 
 
-              <div className='flex gap-3 mt-3'>
+              <div className='flex gap-3 mt-3 btn-cart items-center justify-center md:justify-start'>
                 <Link to='/'>
                   <Button color='amber' size="lg"
-                      variant="outlined" className='text-gray-800 hover:text-amber-500'>
+                      variant="outlined" className='btn text-gray-800 hover:text-amber-500 p-2 sm:p-3'>
                           Seguir comprando 
                   </Button>
                 </Link>
 
                 <Link to='/checkout'>
                   <Button color='amber' size="lg"
-                      variant="filled" className='text-white hover:bg-amber-300 text-md font-normal hover:text-orange-800 hover:shadow-none'>
+                      variant="filled" className='btn text-white hover:bg-amber-300 text-md font-normal
+                                     hover:text-orange-800 hover:shadow-none p-1 sm:p-3'>
                           Terminar Compra
                   </Button>
                 </Link>
