@@ -15,7 +15,6 @@ export const CartContextProvider = ({children}) => {
     
     const addToCart = (itemToAdd, quantity) => {
         setCart(prevCart => {
-            console.log('prevCart: ', prevCart);
             if(isInCart(itemToAdd.id)){
                 const cartUpdated = prevCart.map(item => {
                     if(item.id === itemToAdd.id){

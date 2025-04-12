@@ -1,6 +1,5 @@
 import React from 'react'
 import Evento from './Evento'
-// rafce
 
 const EventoList = ({eventos}) => {
   let content;

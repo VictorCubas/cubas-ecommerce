@@ -82,7 +82,6 @@ const ItemDetail = ({event}) => {
             {event.date}
           </Typography>
 
-          {/* <Link to='carrito'>Ir al carrito</Link>  */}
           {purchase ? 
                 <>
                   <div className='flex gap-x-2 pt-4'>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import CartWidget from "./CartWidget";
 import { TiTicket } from "react-icons/ti";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import {
     Navbar,

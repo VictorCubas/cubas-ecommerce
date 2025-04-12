@@ -3,6 +3,10 @@ import { useCart } from '../hooks/useCart'
 import { Typography, Tooltip } from "@material-tailwind/react";
 import { CiTrash } from "react-icons/ci";
 import { IconButton } from "@material-tailwind/react";
+import { IoLocationSharp } from "react-icons/io5";
+import { FaRegCalendarCheck } from "react-icons/fa";
+import { ImTicket } from "react-icons/im";
+
 
 const CartItem = ({evento}) => {
     const {removeItem} = useCart();
@@ -31,11 +35,23 @@ const CartItem = ({evento}) => {
                         </Typography>
                         <Typography variant="h6"
                             className="pt-1 text-gray-400">
-                        {shortenText(evento.description)} 
+                            {shortenText(evento.description)} 
                         </Typography>
-                        <Typography variant="small"
-                            className="pt-1">
-                            Cantidad: {evento.quantity}
+                        <Typography variant="h6"
+                            className="pt-1 text-gray-400 flex flex-row items-center">
+                            <IoLocationSharp className='text-amber-400'/> <span className='ml-2 pt-1'>{evento.place}</span>
+                        </Typography>
+                        <Typography variant="h6"
+                            className="pt-1 text-gray-400 flex flex-row items-center">
+                            <FaRegCalendarCheck className='text-amber-400'/> <span className='ml-2 pt-1'>{evento.date}</span>
+                        </Typography>
+
+                        <Typography variant="h6"
+                            className="pt-1 text-gray-400 flex flex-row items-center">
+                            <ImTicket className='text-amber-400'/> 
+                                <span className='ml-2 pt-1'>
+                                    {evento.quantity} Ticket{evento.quantity > 1 ? 's': ''}
+                                </span>
                         </Typography>
                     </div>
 

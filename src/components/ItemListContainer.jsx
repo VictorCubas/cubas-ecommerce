@@ -3,9 +3,7 @@ import EventoList from "./EventoList";
 import CustomSpinner from "./CustomSpinner.jsx";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch.js";
-import { toast, Toaster } from 'react-hot-toast';
-import { useCart } from "../hooks/useCart.js";
-import { useEffect } from "react";
+
 
 const ItemListContainer = ({greeting, user}) => {
     const {categoryId} = useParams();

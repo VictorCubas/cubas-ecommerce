@@ -10,7 +10,7 @@ import { useCart } from '../hooks/useCart';
 
 import { doc, getDoc, updateDoc, collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from '../service/firebase';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Purchase from './Purchase';
 import { fetchPurchaseById, getPurchaseByIdFirebase } from '../mock/asynData';
@@ -38,9 +38,7 @@ const CheckoutFom = () => {
 
   const finalizarCompra = async (dataForm) => {
     delete dataForm.emailRepetido;
-    console.log('dataForm: ', dataForm);
 
-    // return;
     try {
       setOnSubmition(true);
 

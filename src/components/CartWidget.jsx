@@ -2,8 +2,6 @@ import { MdOutlineShoppingCart } from "react-icons/md"
 import {
     Button,
   } from "@material-tailwind/react";
-import { CartContext } from "../context/CartContext";
-import { useContext } from "react";
 import { useCart } from "../hooks/useCart";
 
 const CartWidget = () => {

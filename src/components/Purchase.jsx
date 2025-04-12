@@ -1,7 +1,7 @@
-import { Button, Card, CardBody, Badge } from '@material-tailwind/react';
+import { Button, Card, CardBody } from '@material-tailwind/react';
 import React from 'react'
 import { FaRegCheckCircle, FaRegCopy  } from "react-icons/fa";
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const Purchase = ({pagoDetail}) => {

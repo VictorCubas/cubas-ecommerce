@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyANnoPz_8h4UwLpFpsO9vH9jzNPedDamWs",
@@ -18,8 +18,3 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
-
-// export const getItems = async () => {
-//     const querySnapshot = await getDocs(collection(db, 'items'));
-//     querySnapshot.forEach(doc => console.log(`${doc.id} -> ${JSON.stringify(doc.data())}`));
-// }

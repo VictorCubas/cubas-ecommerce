@@ -25,8 +25,6 @@ const CartView = () => {
     setShowModalConfirmation(show);
   }
 
-  console.log('cart: ', cart);
-
   return ( 
     <>
       {!showModalConfirmation ? 
