@@ -22,59 +22,9 @@ export const getProductByIdFirebase = (categoryId, id) => {
 };
 
 
-
-
-// export const addOrderToFibese = () => {
-
-// }
-
-
 const isValidCategory = (categoryId) => {
     return categories.includes(categoryId);
 }
-
-// export const getProducts = () => {
-//     return new Promise((resolve, reject) => {
-//         let error = false;
-
-//         setTimeout(() => {
-//             if(error){
-//                 reject('No hay data');
-//             }
-//             else{
-//                 resolve(productos);
-//             }
-//         }, 3000);
-//     });
-// };
-
-
-
-// export const getProductById = (categoryId, id) => {
-    
-//     return new Promise((resolve, reject) => {
-//         let error = false;
-
-//         setTimeout(() => {
-//             if(error){
-//                 reject('No hay data');
-//             }
-//             else{
-//                 const event = productos.filter(item => item.category === categoryId && item.id === id.toString() );
-//                 resolve(event)
-//             }
-//         }, 2000);
-//     });
-// };
-
-
-
-
-
-// export const uploadToFirebase = () => {
-//     const collectionToAdd = collection(db, 'items');
-//     productos.map(item => addDoc(collectionToAdd, item));
-// };
 
 
 export const getPurchaseByIdFirebase = (purchaseId) => {
