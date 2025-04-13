@@ -14,7 +14,7 @@ Este proyecto fue realizado para aprender las bases de react con javascript
 
 ### Version HOST 💻
 
-Si desea ver el proyecto online, puede ingresar al siguiente link: [Cubbas Ecommerce](https://cubas-ecommerce.vercel.app/)
+Si desea ver el proyecto online, puede ingresar al siguiente link: [Cubas Ecommerce](https://cubas-ecommerce.vercel.app/)
 
 ### Librerias Utilizadas 📖
 
@@ -22,6 +22,7 @@ Si desea ver el proyecto online, puede ingresar al siguiente link: [Cubbas Ecomm
 - [Firebsae](https://console.firebase.google.com/): utilizada como base de datos
 - [React Router Dom](https://reactrouter.com/home/): utilizada para la navegacion por rutas
 - [React Hot Toast](https://react-hot-toast.com/): para mostrar mensajes de exito o error
+- [React Hook Form](https://react-hook-form.com/): para la validacion de los formularios
 
 
 ###### Desarrollado por Victor Cubas
