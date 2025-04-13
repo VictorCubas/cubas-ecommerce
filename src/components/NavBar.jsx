@@ -22,7 +22,7 @@ const NavBar = () => {
     );
   }, []);
 
-  let cssDefault = 'flex items-center font-bold text-lg hover:text-indigo-700';
+  let cssDefault = 'flex items-center font-bold text-lg hover:text-green-800';
  
   const navList = (
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -32,7 +32,7 @@ const NavBar = () => {
         className="p-1 font-normal"
       >
         <NavLink to='/category/deportes' 
-          className={({isActive}) => isActive ? `${cssDefault} text-indigo-700`: cssDefault}
+          className={({isActive}) => isActive ? `${cssDefault} text-green-800`: cssDefault}
           >
           Deportes
         </NavLink>
@@ -43,7 +43,7 @@ const NavBar = () => {
         className="p-1 font-normal"
       >
         <NavLink to="/category/conciertos" 
-          className={({isActive}) => isActive ? `${cssDefault} text-indigo-700`: cssDefault}>
+          className={({isActive}) => isActive ? `${cssDefault} text-green-800`: cssDefault}>
           Conciertos
         </NavLink>
       </Typography>
@@ -54,7 +54,7 @@ const NavBar = () => {
         className="p-1 font-normal"
       >
         <NavLink to="/category/teatros" 
-          className={({isActive}) => isActive ? `${cssDefault} text-indigo-700`: cssDefault}>
+          className={({isActive}) => isActive ? `${cssDefault} text-green-800`: cssDefault}>
           Teatro
         </NavLink>
       </Typography>
@@ -64,7 +64,7 @@ const NavBar = () => {
         className="p-1 font-normal"
       >
         <NavLink to='/category/entretenimientos' 
-          className={({isActive}) => isActive ? `${cssDefault} text-indigo-700`: cssDefault}>
+          className={({isActive}) => isActive ? `${cssDefault} text-green-800`: cssDefault}>
           Entretenimiento
         </NavLink>
       </Typography>
@@ -80,7 +80,7 @@ const NavBar = () => {
             as={NavLink}
             to="/"
           >
-            <span className="text-green-700 flex items-center"><TiTicket />TICKET</span>POINT
+            <span className="text-green-800 flex items-center"><TiTicket />TICKET</span>POINT
           </Typography>
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
