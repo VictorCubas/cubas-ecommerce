@@ -24,10 +24,15 @@ const ItemCounter = ({stock, addItemToCart}) => {
             <button className='px-2 py-1 w-12 rounded-md bg-blue-gray-400' onClick={add}>+</button>
         </div>
 
-        <Button color='amber' className='mt-4' disabled={count === 0 || stock === 0}
-            onClick={() => addItemToCart(count)}>
-                Agregar al carrito
-        </Button>
+        {stock === 0 ? 
+            <Button color='red' className='mt-4' disabled>
+                Agotado
+            </Button> :
+
+            <Button color='amber' className='mt-4' disabled={count === 0}
+                onClick={() => addItemToCart(count)}>
+                    Agregar al carrito
+            </Button>}
           
         
     </>
