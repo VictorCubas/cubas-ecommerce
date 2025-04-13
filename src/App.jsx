@@ -10,6 +10,7 @@ import CheckoutFom from './components/CheckoutFom'
 import ToastCheckoutVacio from './components/ToastCheckoutVacio'
 import Footer from './components/Footer'
 import ToastAddedCartSuccess from './components/ToastAddedCartSuccess'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
 
@@ -17,8 +18,9 @@ function App() {
     <>
       <BrowserRouter>
         <CartContextProvider>
-          <NavBar/>
+          <ScrollToTop />
 
+          <NavBar/>
           <main className="mt-6 pt-5 min-h-screen">
             <Routes>
               <Route path='/' element={<ItemListContainer greeting='Bienvenido a tu punto de venta de entradas'/>}/>
