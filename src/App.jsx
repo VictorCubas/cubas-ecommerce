@@ -9,6 +9,7 @@ import CartContainer from './components/CartContainer'
 import CheckoutFom from './components/CheckoutFom'
 import ToastCheckoutVacio from './components/ToastCheckoutVacio'
 import Footer from './components/Footer'
+import ToastAddedCartSuccess from './components/ToastAddedCartSuccess'
 
 function App() {
 
@@ -29,7 +30,9 @@ function App() {
             </Routes>
           </main>
 
+          
           <ToastCheckoutVacio />
+          <ToastAddedCartSuccess />
           <Footer />
 
 

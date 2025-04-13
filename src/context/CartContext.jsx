@@ -4,13 +4,18 @@ export const CartContext = createContext();
 
 export const CartContextProvider = ({children}) => {
     const [cart, setCart] = useState([]);
-    const [accedienteACheckoutVacio, setAccedienteACheckoutVacio] = useState(false);
+    const [accediendoACheckoutVacio, setAccediendoACheckoutVacio] = useState(false);
+    const [showToastAddedCartSuccess, setShowToastAddedCartSuccess] = useState(null);
 
 
     const toggleCheckoutVacio = () => {
-        setAccedienteACheckoutVacio(prevAccedienteACheckoutVacio => {
-            return !prevAccedienteACheckoutVacio;
+        setAccediendoACheckoutVacio(prevAccediendoACheckoutVacio => {
+            return !prevAccediendoACheckoutVacio;
         });
+    }
+
+    const turnOffToastAddedCartSuccess = () => {
+        setShowToastAddedCartSuccess(null);
     }
     
     const addToCart = (itemToAdd, quantity) => {
@@ -30,6 +35,12 @@ export const CartContextProvider = ({children}) => {
             
             return [...prevCart, {...itemToAdd, quantity}];
 
+        })
+
+        //setea para mostrar el toast de item agregado
+        setShowToastAddedCartSuccess({
+            eventName: itemToAdd.name,
+            quantity: quantity 
         })
     }
 
@@ -70,7 +81,8 @@ export const CartContextProvider = ({children}) => {
 
 
     
-    const contextValue = {cart, setCart, addToCart, clearCart, removeItem, cartTotal, cartQuantity, accedienteACheckoutVacio, toggleCheckoutVacio}
+    const contextValue = {cart, setCart, addToCart, clearCart, removeItem, cartTotal, 
+        cartQuantity, accediendoACheckoutVacio, toggleCheckoutVacio, showToastAddedCartSuccess, turnOffToastAddedCartSuccess, }
 
     return (
         <CartContext.Provider value={contextValue}>
