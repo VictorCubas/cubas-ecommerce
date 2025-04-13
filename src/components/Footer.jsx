@@ -41,11 +41,12 @@ const Footer = () => {
                   </svg>
                   <span className="text-white font-bold text-xl">TICKETPOINT</span>
                 </div>
+                </Link>
+                
                 <p className="mb-6 text-gray-400">
                   Tu punto de venta de entradas para los mejores eventos en Paraguay. Conciertos, deportes, teatro y mucho
                   más.
                 </p>
-              </Link>
             <div className="space-y-2">
               <div className="flex items-start gap-3">
                 <IoLocationSharp  className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
